@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "author": "Embedded QA course lab",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-dht22",
+      "id": "dht",
+      "top": -40,
+      "left": 250,
+      "attrs": {
+        "temperature": "24.5",
+        "humidity": "45"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn",
+      "top": 150,
+      "left": 250,
+      "attrs": {
+        "color": "green",
+        "bounce": "1"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led",
+      "top": 80,
+      "left": 360,
+      "attrs": {
+        "color": "blue"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 130,
+      "left": 340,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relay",
+      "top": 30,
+      "left": -180,
+      "attrs": {}
+    }
+  ],
+  "connections": [
+    [
+      "esp:15",
+      "dht:SDA",
+      "green",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "esp:3V3",
+      "dht:VCC",
+      "red",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "esp:GND.1",
+      "dht:GND",
+      "black",
+      [
+        "v0"
+      ]
+    ],
+    [
+      "esp:4",
+      "btn:1.l",
+      "green",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "btn:2.l",
+      "esp:GND.1",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:2",
+      "r1:1",
+      "blue",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "r1:2",
+      "led:A",
+      "blue",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "led:C",
+      "esp:GND.1",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:5",
+      "relay:IN",
+      "orange",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:VIN",
+      "relay:VCC",
+      "red",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:GND.2",
+      "relay:GND",
+      "black",
+      [
+        "h0"
+      ]
+    ],
+    [
+      "esp:TX0",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX0",
+      "$serialMonitor:TX",
+      "",
+      []
+    ]
+  ],
+  "dependencies": {}
+}
