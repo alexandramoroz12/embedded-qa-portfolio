@@ -1,0 +1,282 @@
+{
+  "version": 1,
+  "author": "QA Embedded Training",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-arduino-uno",
+      "id": "uno",
+      "top": 20,
+      "left": 300,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnOpen",
+      "top": 230,
+      "left": 40,
+      "attrs": {
+        "color": "green",
+        "label": "OPEN",
+        "key": "o",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnClose",
+      "top": 300,
+      "left": 40,
+      "attrs": {
+        "color": "red",
+        "label": "CLOSE",
+        "key": "c",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btnStop",
+      "top": 370,
+      "left": 40,
+      "attrs": {
+        "color": "yellow",
+        "label": "STOP",
+        "key": "s",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "limOpen",
+      "top": 230,
+      "left": 780,
+      "attrs": {
+        "color": "green",
+        "label": "LIMIT OPEN",
+        "key": "u",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "limClose",
+      "top": 300,
+      "left": 780,
+      "attrs": {
+        "color": "red",
+        "label": "LIMIT CLOSE",
+        "key": "d",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relayOpen",
+      "top": 100,
+      "left": 650,
+      "attrs": {
+        "transistor": "npn"
+      }
+    },
+    {
+      "type": "wokwi-relay-module",
+      "id": "relayClose",
+      "top": 200,
+      "left": 650,
+      "attrs": {
+        "transistor": "npn"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledOpen",
+      "top": 430,
+      "left": 360,
+      "attrs": {
+        "color": "green",
+        "label": "OPEN"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledClose",
+      "top": 430,
+      "left": 450,
+      "attrs": {
+        "color": "red",
+        "label": "CLOSE"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "ledError",
+      "top": 430,
+      "left": 540,
+      "attrs": {
+        "color": "yellow",
+        "label": "ERROR"
+      }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "buzzer",
+      "top": 430,
+      "left": 650,
+      "attrs": {
+        "volume": "0.2"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "uno:GND.1",
+      "btnOpen:2.l",
+      "black",
+      []
+    ],
+    [
+      "uno:2",
+      "btnOpen:1.l",
+      "green",
+      []
+    ],
+    [
+      "uno:GND.1",
+      "btnClose:2.l",
+      "black",
+      []
+    ],
+    [
+      "uno:3",
+      "btnClose:1.l",
+      "red",
+      []
+    ],
+    [
+      "uno:GND.1",
+      "btnStop:2.l",
+      "black",
+      []
+    ],
+    [
+      "uno:4",
+      "btnStop:1.l",
+      "yellow",
+      []
+    ],
+    [
+      "uno:GND.1",
+      "limOpen:2.l",
+      "black",
+      []
+    ],
+    [
+      "uno:5",
+      "limOpen:1.l",
+      "green",
+      []
+    ],
+    [
+      "uno:GND.1",
+      "limClose:2.l",
+      "black",
+      []
+    ],
+    [
+      "uno:6",
+      "limClose:1.l",
+      "red",
+      []
+    ],
+    [
+      "uno:8",
+      "relayOpen:IN",
+      "blue",
+      []
+    ],
+    [
+      "uno:5V",
+      "relayOpen:VCC",
+      "red",
+      []
+    ],
+    [
+      "uno:GND.2",
+      "relayOpen:GND",
+      "black",
+      []
+    ],
+    [
+      "uno:9",
+      "relayClose:IN",
+      "blue",
+      []
+    ],
+    [
+      "uno:5V",
+      "relayClose:VCC",
+      "red",
+      []
+    ],
+    [
+      "uno:GND.2",
+      "relayClose:GND",
+      "black",
+      []
+    ],
+    [
+      "uno:10",
+      "ledOpen:A",
+      "green",
+      []
+    ],
+    [
+      "ledOpen:C",
+      "uno:GND.2",
+      "black",
+      []
+    ],
+    [
+      "uno:11",
+      "ledClose:A",
+      "red",
+      []
+    ],
+    [
+      "ledClose:C",
+      "uno:GND.2",
+      "black",
+      []
+    ],
+    [
+      "uno:12",
+      "ledError:A",
+      "yellow",
+      []
+    ],
+    [
+      "ledError:C",
+      "uno:GND.2",
+      "black",
+      []
+    ],
+    [
+      "buzzer:2",
+      "uno:13",
+      "purple",
+      []
+    ],
+    [
+      "buzzer:1",
+      "uno:GND.3",
+      "black",
+      []
+    ]
+  ],
+  "serialMonitor": {
+    "display": "always",
+    "newline": "lf",
+    "convertEol": true
+  }
+}
