@@ -1,0 +1,2 @@
+# No external libraries are required.
+# The project uses only the standard Arduino/ESP32 core.

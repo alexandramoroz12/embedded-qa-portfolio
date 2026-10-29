@@ -1,0 +1,146 @@
+{
+  "version": 1,
+  "author": "QA Debounce Demo",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-esp32-devkit-v1",
+      "id": "esp",
+      "top": 0,
+      "left": 0,
+      "attrs": {}
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn1",
+      "top": 20,
+      "left": -170,
+      "attrs": {
+        "color": "green",
+        "label": "BUTTON",
+        "key": "B"
+      }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "noise",
+      "top": 140,
+      "left": -170,
+      "attrs": {
+        "color": "red",
+        "label": "NOISE",
+        "key": "N",
+        "bounce": "0"
+      }
+    },
+    {
+      "type": "wokwi-led",
+      "id": "led1",
+      "top": 20,
+      "left": 220,
+      "attrs": {
+        "color": "green",
+        "label": "LOGICAL EVENT"
+      }
+    },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 100,
+      "left": 208,
+      "rotate": 90,
+      "attrs": {
+        "value": "220"
+      }
+    },
+    {
+      "type": "wokwi-logic-analyzer",
+      "id": "logic1",
+      "top": -170,
+      "left": 145,
+      "attrs": {
+        "label": "RAW vs LOGICAL"
+      }
+    }
+  ],
+  "connections": [
+    [
+      "esp:TX0",
+      "$serialMonitor:RX",
+      "",
+      []
+    ],
+    [
+      "esp:RX0",
+      "$serialMonitor:TX",
+      "",
+      []
+    ],
+    [
+      "btn1:1.l",
+      "esp:D18",
+      "green",
+      []
+    ],
+    [
+      "btn1:2.l",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "noise:1.l",
+      "esp:D18",
+      "red",
+      []
+    ],
+    [
+      "noise:2.l",
+      "esp:GND.2",
+      "black",
+      []
+    ],
+    [
+      "esp:D2",
+      "r1:1",
+      "green",
+      []
+    ],
+    [
+      "r1:2",
+      "led1:A",
+      "green",
+      []
+    ],
+    [
+      "led1:C",
+      "esp:GND.1",
+      "black",
+      []
+    ],
+    [
+      "esp:D18",
+      "logic1:D0",
+      "orange",
+      []
+    ],
+    [
+      "esp:D2",
+      "logic1:D1",
+      "blue",
+      []
+    ],
+    [
+      "esp:GND.1",
+      "logic1:GND",
+      "black",
+      []
+    ]
+  ],
+  "serialMonitor": {
+    "display": "always",
+    "collapse": false,
+    "newline": "lf",
+    "convertEol": true
+  }
+}
