@@ -25,9 +25,9 @@ Risks are turned into levels, methods and environments in [`MASTER_TEST_PLAN.md`
 
 ## Key evidence
 Full list: [`EVIDENCE_INDEX.md`](EVIDENCE_INDEX.md). The strongest items:
-- `wokwi/WDT_hang.mp4`: hang → WDT reset in ≈3 s by the Wokwi timer, but the relay stays ON (E04).
-- `network-stress/HW7_IoT_Network_Test_Report_EN.docx`: buffer overflow with `dropped=0` and a heap trend of −23% (E07, E08).
-- `pulseview/HW4_I2C_Test_Report_EN.docx`: NACK → the main loop stops (E03).
+- `bug-reports/WDT_hang.mp4`: hang → WDT reset in ≈3 s by the Wokwi timer, but the relay stays ON (E04).
+- `network-stress/HW7_IoT_Network_Test_Report_EN.pdf`: buffer overflow with `dropped=0` and a heap trend of −23% (E07, E08).
+- `pulseview/HW4_I2C_Test_Report_EN.pdf`: NACK → the main loop stops (E03).
 
 ## Key findings
 24 defects across 7 practices (12 Critical, 2 High, 8 Major, 2 Low/Medium). The most important:
