@@ -326,9 +326,9 @@ Not verified, or verified only in simulation:
 
 | Artifact | Repository folder | Contents |
 |---|---|---|
-| Wokwi projects from VS Code (HW1–HW7), `WDT_hang.mp4` | `wokwi/` | `diagram.json`, `main.cpp`, `platformio.ini`, `wokwi.toml` |
+| Wokwi projects from VS Code (HW1–HW7) | `wokwi/` | `diagram.json`, `main.cpp`, `platformio.ini`, `wokwi.toml` |
 | HW4 report: I2C analysis in PulseView | `pulseview/` | `HW4_I2C_Test_Report_EN.docx` |
 | Autotest code (HW6) | `pytest/` | https://github.com/alexandramoroz12/embeded_firmware-autotests_hw6 |
 | HW7 report and logs (network, memory stability) | `network-stress/` | `HW7_IoT_Network_Test_Report_EN.docx`, `platformio-device-monitor-*.log` |
 | Full test reports HW1, HW2, HW3, HW5, HW6 | `test-reports/` | `HW*_..._Test_Report_EN.docx` |
-| Bug reports per topic, with screenshots | `bug-reports/` | `Bug_Reports_HW1…HW7_*_EN.docx`, `Bug_Reports_HW1.xlsx` |
+| Bug reports per topic, with screenshots, `WDT_hang.mp4` | `bug-reports/` | `Bug_Reports_HW1…HW7_*_EN.docx`, `Bug_Reports_HW1.xlsx` |
