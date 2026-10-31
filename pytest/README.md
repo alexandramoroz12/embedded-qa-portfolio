@@ -1,47 +1,45 @@
 # Firmware autotests (Pytest + Wokwi)
 
-Автотести для прошивки ESP32, що працює в симуляторі Wokwi. Python
-спілкується з пристроєм через Serial/RFC2217 (`pyserial`), відповіді
-пристрою це JSON-рядки.
+Autotests for ESP32 firmware running in the Wokwi simulator. Python talks to the device over Serial/RFC2217 (pyserial); the device's responses are JSON strings.
 
-## Структура
+## Structure
 
-- `device.py` - клас `Device`: відправка команд і розбір JSON-відповіді
-- `conftest.py` - фікстура `device` (precondition `SET LED OFF` перед тестом, cleanup після)
-- `tests/` - тести (статус, реле/LED, датчик, межові значення, timeout)
-- `check.py` - допоміжний скрипт для діагностики зв'язку та часу відповіді
-- `pytest.ini`, `requirements.txt` - налаштування й залежності
+- `device.py` - the `Device`class: sends commands and parses the JSON response
+- `conftest.py` - the`device` fixture (precondition `SET LED OFF` before each test, cleanup afterwards)
+- `tests/` - tests (status, relay/LED, sensor, boundary values, timeout)
+- `check.py` - helper script for diagnosing the connection and response time
+- `pytest.ini`, `requirements.txt` - settings and dependencies
 
-## Запуск
+## How to run
 
-1. Запустити симуляцію Wokwi (RFC2217 на порту 4000).
-2. Встановити залежності:
+1. Start the Wokwi simulation (RFC2217 on port 4000).
+2. Install the dependencies:
 
 ```
 pip install -r requirements.txt
 ```
 
-3. Вказати порт і запустити тести (PowerShell):
+3. Set the port and run the tests (PowerShell):
 
 ```
 $env:DEVICE_PORT="rfc2217://localhost:4000"
 python -m pytest -v
 ```
 
-Для реальної плати замість URL вказують порт, наприклад `COM5`.
+For a real board, specify a port such as`COM5`instead of the URL.
 
-## Що покрито
+## What is covered
 
-- базові команди: `PING`, `STATUS`, `GET TEMP`, `SET LED ON/OFF`, `SET PWM N`, `RESET`
-- межові та негативні значення `SET PWM`, невідомі команди
-- поведінка при timeout (`NO_RESPONSE` -> `TimeoutError`)
-- контрольований precondition і cleanup
+- basic commands: `PING`, `STATUS`, `GET TEMP`, `SET LED ON/OFF`, `SET PWM N`, `RESET`
+- boundary and negative values of `SET PWM`, unknown commands
+- timeout behaviour (`NO_RESPONSE` -> `TimeoutError`)
+- controlled precondition and cleanup
 
-## Відомі FAIL і їх класифікація
+## Known FAILs and their classification
 
-| Тест | Симптом | Категорія |
+| Test | 	Symptom | Category |
 |---|---|---|
-| `test_ping` | `PING` відповідає за ~1,3 с, клієнтський timeout 1,0 с | Communication (вимоги до часу відповіді немає) |
-| `test_pwm_valid_boundaries[100]` | `SET PWM 100` -> `ERROR` (вимога 5: 0..100 включно) | Firmware |
-| `test_reset_restores_safe_state` | після `RESET` `pwm` лишається 255 (вимога 7) | Firmware |
-| `test_temperature_is_valid_json` | відповідь `GET TEMP` без закривної `}` (вимога 3) | Firmware |
+| `test_ping` | `PING` responds in ~1.3 s, the client timeout is 1.0 s | Communication (there is no response-time requirement) |
+| `test_pwm_valid_boundaries[100]` | `SET PWM 100` -> `ERROR` (requirement 5: 0..100 inclusive) | Firmware |
+| `test_reset_restores_safe_state` | after `RESET` `pwm` the pwm stays 255 (requirement 7) | Firmware |
+| `test_temperature_is_valid_json` | the `GET TEMP` response has no closing `}` (requirement 3) | Firmware |
