@@ -4,7 +4,7 @@
 |---|---|
 | **Author** | Alexandra Holoborodko |
 | **Date** | 31.10.2026 |
-| **Status** | Draft v2 |
+| **Status** | Approved |
 | **Builds** | BUGGY firmware (black-box, source code not inspected) |
 | **Basis** | 7 practical assignments of the Embedded QA in IoT and DefTech course (HW1–HW7) |
 
